@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "lib": ["es2016"],
+        "strict": true,
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "module": "commonjs",
+        "sourceMap": true,
+        "typeRoots": ["node_modules/@types"],
+        "experimentalDecorators": true
+    },
+    "exclude": ["node_modules", "test"]
+}
