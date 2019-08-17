@@ -1,5 +1,5 @@
 import * as assert from "assert";
-import Struct from "./../src";
+import { TypeStruct, INT8, INT16, INT32, INT64, UINT16, UINT32, UINT64, UINT8, CHAR, FLOAT, DOUBLE, WORD, DWORD } from "./../src";
 function assertFloatEqual(actual: number, expected: number) {
     const delta = Math.abs(actual - expected);
     assert(
@@ -14,15 +14,15 @@ function assertFloatEqual(actual: number, expected: number) {
 describe("#index.ts", () => {
     describe("#Struct", () => {
         it("integer", () => {
-            const struct = new Struct([
-                ["INT8", "int8"], //
-                ["INT16", "int16"],
-                ["INT32", "int32"],
-                ["INT64", "int64"],
-                ["UINT8", "uint8"],
-                ["UINT16", "uint16"],
-                ["UINT32", "uint32"],
-                ["UINT64", "uint64"]
+            const struct = new TypeStruct("TestStruct", [
+                [INT8, "int8"], //
+                [INT16, "int16"],
+                [INT32, "int32"],
+                [INT64, "int64"],
+                [UINT8, "uint8"],
+                [UINT16, "uint16"],
+                [UINT32, "uint32"],
+                [UINT64, "uint64"]
             ]);
             const oldObj = {
                 int8: -128,
@@ -40,9 +40,9 @@ describe("#index.ts", () => {
         });
 
         it("float", () => {
-            const struct = new Struct([
-                ["FLOAT", "float"], //
-                ["DOUBLE", "double"]
+            const struct = new TypeStruct("TestStruct", [
+                [FLOAT, "float"], //
+                [DOUBLE, "double"]
             ]);
             const oldObj = {
                 float: 123.456,
@@ -56,25 +56,28 @@ describe("#index.ts", () => {
         });
 
         it("array", () => {
-            const struct = new Struct([
-                ["INT8", "int8arr", 10], //
-                ["CHAR", "str", 32]
+            const struct = new TypeStruct("TestStruct", [
+                [INT8, "int8arr", 10], //
+                [CHAR, "str", 10],
+                [CHAR, "str2", 5]
             ]);
             const oldObj = {
                 int8arr: [1, 2, 3, 4, 5, 6, 7],
-                str: "ahahawer"
+                str: "abcdefg",
+                str2: "abcdefg"
             };
             const ab = struct.serialize(oldObj);
             const newObj = struct.unserialize(ab);
 
             assert.deepEqual(newObj.int8arr, [1, 2, 3, 4, 5, 6, 7, 0, 0, 0]);
             assert.equal(newObj.str, oldObj.str);
+            assert.equal(newObj.str2, "abcde");
         });
 
         it("zero array", () => {
-            const struct = new Struct([
-                ["DWORD", "len"], //
-                ["UINT8", "data", 0]
+            const struct = new TypeStruct("TestStruct", [
+                [DWORD, "len"], //
+                [UINT8, "data", 0]
             ]);
 
             const arr = [1, 2, 2, 2, 3, 3, 4, 2, 3, 34, 5, 42, 2, 21, 87, 4, 3, 2];

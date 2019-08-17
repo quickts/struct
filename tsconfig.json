@@ -1,14 +1,14 @@
 {
     "compilerOptions": {
-        "target": "es5",
-        "lib": ["es2016"],
-        "strict": true,
-        "outDir": "./dist",
-        "rootDir": "./src",
         "module": "commonjs",
+        "declaration": true,
+        "removeComments": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es2017",
         "sourceMap": true,
-        "typeRoots": ["node_modules/@types"],
-        "experimentalDecorators": true
+        "outDir": "./dist",
+        "baseUrl": "./"
     },
     "exclude": ["node_modules", "test"]
 }
