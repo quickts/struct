@@ -1,7 +1,7 @@
 import "reflect-metadata";
 
 import { TypeBase } from "../base/type.base";
-import { TypeChar, INT8 } from "../types";
+import { TypeChar } from "../types";
 import { TypeStruct } from "./struct.type";
 import { STRUCT_FIELD_METADATA, STRUCT_METADATA } from "./struct.constants";
 
@@ -40,4 +40,9 @@ export function Struct<TFunction extends Function>(print?: Function) {
 export function isStruct<TFunction extends Function>(target: TFunction) {
     const structMetadata: TypeStruct = Reflect.getMetadata(STRUCT_METADATA, target);
     return !!structMetadata;
+}
+
+export function getStruct<TFunction extends Function>(target: TFunction) {
+    const structMetadata: TypeStruct = Reflect.getMetadata(STRUCT_METADATA, target);
+    return structMetadata;
 }
