@@ -1,5 +1,5 @@
 {
-    "name": "@chengaoyuan/struct",
+    "name": "@quickts/struct",
     "version": "1.0.0",
     "description": "结构体的序列化与反序列化",
     "main": "dist/index.js",
@@ -9,17 +9,19 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/GithubCGY/struct.git"
+        "url": "git+https://github.com/quickts/struct.git"
     },
     "keywords": [
-        "struct"
+        "quickts",
+        "struct",
+        "quickts-struct"
     ],
-    "author": "chengaoyuan",
+    "author": "quickts",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/GithubCGY/struct/issues"
+        "url": "https://github.com/quickts/struct/issues"
     },
-    "homepage": "https://github.com/GithubCGY/struct#readme",
+    "homepage": "https://github.com/quickts/struct#readme",
     "devDependencies": {
         "@types/mocha": "^5.2.5",
         "@types/node": "^10.12.12",
