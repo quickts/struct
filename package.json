@@ -1,6 +1,6 @@
 {
     "name": "@quickts/struct",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "结构体的序列化与反序列化",
     "main": "dist/index.js",
     "scripts": {
