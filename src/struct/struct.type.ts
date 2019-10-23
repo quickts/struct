@@ -15,7 +15,7 @@ import { TypeBase } from "../base/type.base";
 import { CHAR } from "../types";
 
 export class TypeStruct extends TypeBase {
-    private fields: { name: string; type: TypeBase; count: number; isArray: boolean; encoding?: string }[] = [];
+    private fields: { name: string; type: TypeBase; count: number; isArray: boolean; encoding?: BufferEncoding }[] = [];
     private hasZeroArray: boolean = false;
     private structSize: number = 0;
     private alignSize: number = 1;
