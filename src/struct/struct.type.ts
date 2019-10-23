@@ -134,7 +134,7 @@ export class TypeStruct extends TypeBase {
     serialize(data: { [key: string]: any }) {
         const size = this.getRealSize(data);
         const buf = Buffer.allocUnsafe(size);
-        this.encode(buf, data, 0);
+        this.encode(buf, 0, data);
         return buf;
     }
 
@@ -179,7 +179,7 @@ export class TypeStruct extends TypeBase {
         return obj;
     }
 
-    encode(buf: Buffer, obj: any, offset: number): void {
+    encode(buf: Buffer, offset: number, obj: any): void {
         for (let index = 0; index < this.fields.length; ++index) {
             const field = this.fields[index];
             const alignSize = field.type.getAlignSize();
