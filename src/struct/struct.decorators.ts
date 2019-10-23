@@ -28,7 +28,8 @@ export function Field(type: TypeBase | Function, len?: number, encoding?: string
 
 export function Struct<TFunction extends Function>(print?: Function) {
     return (target: TFunction) => {
-        const structFieldMetadata: [TypeBase, string, number?, string?][] = Reflect.getMetadata(STRUCT_FIELD_METADATA, target.prototype) || [];
+        const structFieldMetadata: [TypeBase, string, number?, BufferEncoding?][] =
+            Reflect.getMetadata(STRUCT_FIELD_METADATA, target.prototype) || [];
         const structMetadata = new TypeStruct(target.name, structFieldMetadata);
         Reflect.defineMetadata(STRUCT_METADATA, structMetadata, target);
         if (print) {

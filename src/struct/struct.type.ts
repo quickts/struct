@@ -20,7 +20,7 @@ export class TypeStruct extends TypeBase {
     private structSize: number = 0;
     private alignSize: number = 1;
     private name: string;
-    constructor(name: string, fieldDesArray: [TypeBase, string, number?, string?][]) {
+    constructor(name: string, fieldDesArray: [TypeBase, string, number?, BufferEncoding?][]) {
         super();
         this.name = name;
         for (const [type, name, count, encoding] of fieldDesArray) {
